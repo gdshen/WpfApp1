@@ -28,7 +28,12 @@ namespace WpfApp1
 
         private void PnlMainGrid_OnMouseUp(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("You clicked me at " + e.GetPosition(this).ToString());
+//            MessageBox.Show("You clicked me at " + e.GetPosition(this).ToString());
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                MessageBox.Show(openFileDialog.FileName);
+            }
         }
     }
 }
