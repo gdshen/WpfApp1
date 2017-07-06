@@ -6,7 +6,11 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid x:Name="pnlMainGrid" MouseUp="PnlMainGrid_OnMouseUp" Background="LightBlue">
-        
+    <Grid>
+        <MediaElement x:Name="mediaElement" HorizontalAlignment="Left" Height="217" Margin="116,27,0,0" VerticalAlignment="Top" Width="305" RenderTransformOrigin="0.5,0.5">
+
+        </MediaElement>
+        <Button x:Name="button" Content="Open File" Click="Button_OnClick" HorizontalAlignment="Left" Margin="32,273,0,0" VerticalAlignment="Top" Width="75"/>
+
     </Grid>
 </Window>

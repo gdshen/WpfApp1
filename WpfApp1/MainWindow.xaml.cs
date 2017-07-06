@@ -26,12 +26,12 @@ namespace WpfApp1
             InitializeComponent();
         }
 
-        private void PnlMainGrid_OnMouseUp(object sender, MouseButtonEventArgs e)
+        private void Button_OnClick(object sender, RoutedEventArgs e)
         {
-//            MessageBox.Show("You clicked me at " + e.GetPosition(this).ToString());
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
             {
+                mediaElement.Source = new Uri(openFileDialog.FileName);
                 MessageBox.Show(openFileDialog.FileName);
             }
         }
