@@ -5,12 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <MediaElement x:Name="mediaElement" HorizontalAlignment="Left" Height="217" Margin="116,27,0,0" VerticalAlignment="Top" Width="305" RenderTransformOrigin="0.5,0.5">
+        Title="Label" Height="400" Width="600">
+    <Window.CommandBindings>
+        <CommandBinding Command="Open" CanExecute="OpenCommand_CanExecute" Executed="OpenCommand_Executed"/>
+        <CommandBinding Command="local:CustomCommands.Exit" CanExecute="ExitCommand_CanExecute" Executed="ExitCommand_Executed"/>
+    </Window.CommandBindings>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Command="Open"></MenuItem>
+                <MenuItem Header="_Save"></MenuItem>
+                <Separator/>
+                <MenuItem Command="local:CustomCommands.Exit"></MenuItem>
+            </MenuItem>
+        </Menu>
+        
+        <MediaElement DockPanel.Dock="Bottom" x:Name="mediaElement"/>
 
-        </MediaElement>
-        <Button x:Name="button" Content="Open File" Click="Button_OnClick" HorizontalAlignment="Left" Margin="32,273,0,0" VerticalAlignment="Top" Width="75"/>
-
-    </Grid>
+    </DockPanel>
 </Window>
