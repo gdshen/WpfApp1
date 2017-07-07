@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using Microsoft.Win32;
 
 namespace WpfApp1
@@ -24,6 +25,41 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += timer_Tick;
+            timer.Start();
+        }
+
+        void timer_Tick(object sender, EventArgs e)
+        {
+            if (mePlayer.Source != null)
+            {
+                if (mePlayer.NaturalDuration.HasTimeSpan)
+                    lblStatus.Content = String.Format("{0} / {1}", mePlayer.Position.ToString(@"mm\:ss"),
+                        mePlayer.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
+                else
+                {
+                    lblStatus.Content = String.Format("Select file {0}", mePlayer.Source.ToString());
+                }
+            }
+            else
+                lblStatus.Content = "No file selected...";
+        }
+
+        private void btnPlay_Click(object sender, RoutedEventArgs e)
+        {
+            mePlayer.Play();
+        }
+
+        private void btnPause_Click(object sender, RoutedEventArgs e)
+        {
+            mePlayer.Pause();
+        }
+
+        private void btnStop_Click(object sender, RoutedEventArgs e)
+        {
+            mePlayer.Stop();
         }
 
         private void OpenCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -36,7 +72,8 @@ namespace WpfApp1
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
             {
-                mediaElement.Source = new Uri(openFileDialog.FileName);
+                mePlayer.Source = new Uri(openFileDialog.FileName);
+                mePlayer.Play();
             }
         }
 
