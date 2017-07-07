@@ -62,6 +62,11 @@ namespace WpfApp1
             mePlayer.Stop();
         }
 
+        private void btnSpeed_Click(object sender, RoutedEventArgs e)
+        {
+            mePlayer.SpeedRatio = Convert.ToDouble(textBox.Text);
+        }
+
         private void OpenCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;

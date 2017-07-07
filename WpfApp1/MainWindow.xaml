@@ -26,7 +26,11 @@
                 <Button Name="btnPlay" Click="btnPlay_Click">Play</Button>
                 <Button Name="btnPause" Margin="5,0" Click="btnPause_Click">Pause</Button>
                 <Button Name="btnStop" Click="btnStop_Click">Stop</Button>
+                <Label Content="Speed" Margin="20,0,0,0" Target="{Binding ElementName=textBox}"></Label>
+                <TextBox x:Name="textBox" Margin="5,0,10,0" TextWrapping="Wrap" Text="1" FontSize="16"/>
+                <Button Name="btnSpeed" Click="btnSpeed_Click">Set speed</Button>
             </WrapPanel>
+            
         </StackPanel>
 
         <MediaElement x:Name="mePlayer" LoadedBehavior="Manual" Stretch="None"/>
